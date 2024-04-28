@@ -1,0 +1,115 @@
+<Container>
+  <div class="header">
+    <h1> Fishbowl <GithubIcon href="https://github.com/Xterminate1818/fishbowl"/> </h1>
+    <h2> Vector Math - Standard Library </h2>
+  </div>
+
+  <div class="content">
+    <h2 class="distinct"> Gallery </h2>
+    <div class="pure-g">
+      <div class="pure-u-1-3"> <img class="pure-img" src="/resources/mona_lisa.gif" title="Mona Lisa - Leonardo da Vinci" />
+      </div>
+      <div class="pure-u-1-3">
+        <img class="pure-img" src="/resources/wanderer.gif"
+          title="Wanderer above the Sea of Fog - Caspar David Friederich" />
+      </div>
+      <div class="pure-u-1-3">
+        <img class="pure-img" src="/resources/starry_night.gif" title="The Starry Night - Vincent van Gogh" />
+      </div>
+    </div>
+    <h2 class="distinct"> Motivation </h2>
+    Physics solvers tend to be very complex software. In the
+    past, I toyed around with physics solvers for different kinds of geometries, but
+    struggled to implement these algorithms in a way that was both convincing
+    and performant. The idea for Fishbowl came from a video by the creator
+    Pezzza. They describe the high-level implementation details of a Verlet
+    Integration solver. This approach caught my interest.
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/lS_qeBy3aQI?si=gLrHCWO-XUSP0T0j" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      </iframe>
+    </div>
+    Pezza's work is very impressive, particularly the demonstration at the end
+    which proves the program is deterministic. However, the focus of Pezzza's
+    project was to create a performant real-time application. I was instead
+    interested in pre-rendered images and animations. I decided to expand the
+    one-off demonstration at the end of Pezzza's video into a fully fledged
+    app.
+    <h2 class="distinct"> Approach </h2>
+    At the center of any physics solver is the physics 'step', a fixed interval of
+    time where objects move and collide. The physics step of Fishbowl consists of five
+    distinct phases.
+    <@code lang="rust">
+// Keep all objects inside the simulation bounds
+self.constrain_rect();
+// Sort objects from left-most to right-most.
+self.sort();
+// Apply collision impulses
+self.collide();
+// Calculate new velocities and accelerations
+self.integrate();
+// Finally, advance the simulation clock
+self.clock += 1;
+    </@code>
+    Because the program doesn't run in real time, simulating over one second
+    may take more or less than a second. Calculating a larger number of shorter
+    time steps will make the simulation more accurate, but will take longer to
+    process. Fishbowl uses an number of optimizations to reduce processing time.
+    By keeping the array of objects sorted from left to right, the number of collision
+    checks is significantly reduced. The rendering system is decoupled from the simulation,
+    and the two are pipelined together and run in parallel.
+    <h2 class="distinct"> Rendering </h2>
+    The method I used for drawing circles to a frame went through numerous iterations.
+    Rendering performance is a major bottleneck, and so it was important to do so in
+    parallel. After writing and benchmarking several software renderers, I landed on
+    WebGPU. While quite bloated, WebGPU provides a fast, low level, and cross platform
+    rendering API designed for async programs. This allows Fishbowl to easily integrate
+    with both my server, which is entirely async, and the simulation, which is mostly 
+    synchronous. While I would have liked to use a bespoke solution, GPU accelerated 
+    rendering is far too quick to realistically consider any other option. 
+    <h2 class="distinct"> Try It Out </h2>
+    You can try out Fishbowl below, or download the CLI tool from my GitHub. 
+    It works best on images that are roughly square and don't contain any text.
+    Keep in mind the web version below will be slower and generate lower quality 
+    results than the native application, as it is being run on my home server with
+    limited resources.
+    <br/><br/>
+    <img class="pure-img centered" width=512 height=512 id="result_image" hidden />
+    <form class="pure-form-stacked" style="justify-content: center;" method="post" enctype="multipart/form-data" id="fishForm">
+      <fieldset>
+        <label for="file"> Select an image </label>
+        <input id="file" type="file" name="image" required
+          accept="image/bmp,image/gif,image/vnd.microsoft.icon,image/jpeg,image/png,image/tiff,image/webp"/>
+        <br/>
+        <input class="pure-button pure-button-primary" type="submit" value="Run Fishbowl"/>
+      </fieldset>
+    </form>
+    <!-- Handle displaying image -->
+    <script>
+      const form = document.getElementById("fishForm");
+      const image = document.getElementById("result_image");
+      form.onsubmit = async (ev) => {
+        ev.preventDefault();
+        image.src = "";
+        image.hidden = false;
+        image.classList.add("loading");
+        const form = ev.currentTarget;
+        const action = form.action;
+        try {
+          const form_data = new FormData(form);
+          const response = await fetch(action, {
+            method: 'POST',
+            body: form_data,
+          });
+          const blob = await response.blob();
+          image.src = URL.createObjectURL(blob);
+          image.classList.remove("loading");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </div>
+</Container>

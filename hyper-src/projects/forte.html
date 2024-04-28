@@ -1,0 +1,203 @@
+<Container> 
+  <div class="header">
+    <h1> Forte <GithubIcon href="https://github.com/Xterminate1818/forte"/> </h1>
+    <h2> Programming Language - Hackathon </h2>
+  </div>
+  <div class="content"> 
+    <h2 class="distinct"> Motivation </h2>
+    In February of 2024, I competed at RowdyHacks during the 9th
+    annual Hackathon. This was my second time attending, having 
+    <a class="link" href="/projects/fractal-viewer"> 
+      placed second the previous year 
+    </a>. 
+    My understanding of programming and of Rust had grown significantly over
+    that time, and I wanted to one-up myself. I had just finished my Computer
+    Organization class, where we learned to program in x86 assembly. The class
+    made me realize that the design of an assembly language has a profound
+    impact on every higher level language built on-top of it. As a Rust
+    programmer who cares a great deal about safety and soundness guarantees, it
+    troubles me that I have to compile to an inherently unsafe assembly
+    language. I wanted to find out how feasible it would be to write a new
+    assembly language designed for easy static analysis and safety guarantees.
+    I am very satisfied with the result, which I named Forte.
+    <h2 class="distinct"> Specifications </h2>
+    <h3> Instructions </h3>
+    Forte is an assembly language and bytecode for a hypothetical 128-bit
+    processor. It contains 26 instructions, but no directly exposed registers.
+    <div class="pure-g">
+    <table class="striped pure-u-1-2">
+      <thead> 
+        <th> Name </th>
+        <th> Mnemonic </th>
+      </thead> 
+      <tbody>
+        <tr>
+          <td> Push </td>
+          <td> push </td>
+        </tr>
+        <tr>
+          <td> Pop </td> <td> pop </td>
+        </tr>
+        <tr>
+          <td> Duplicate </td>
+          <td> dup </td>
+        </tr>
+        <tr>
+          <td> Add </td>
+          <td> add </td>
+        </tr>
+        <tr>
+          <td> Difference </td>
+          <td> diff </td>
+        </tr>
+        <tr>
+          <td> Multiply </td>
+          <td> mul </td>
+        </tr>
+        <tr>
+          <td> Divide </td>
+          <td> div </td>
+        </tr>
+        <tr>
+          <td> Remainder </td>
+          <td> rem </td>
+        </tr>
+        <tr>
+          <td> Bitwise And </td>
+          <td> and </td>
+        </tr>
+        <tr>
+          <td> Bitwise Or </td>
+          <td> or </td>
+        </tr>
+        <tr>
+          <td> Bitwise Xor </td>
+          <td> xor </td>
+        </tr>
+        <tr>
+          <td> Shift Right </td>
+          <td> shr </td>
+        </tr>
+        <tr>
+          <td> Shift Left </td>
+          <td> shl </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="striped pure-u-1-2"> 
+      <thead> 
+        <th> Name (cont.) </th>
+        <th> Mnemonic (cont.) </th>
+      </thead> 
+      <tbody>
+        <tr>
+          <td> Branch Equal </td>
+          <td> beq </td>
+        </tr>
+        <tr>
+          <td> Branch Unequal </td>
+          <td> bne </td>
+        </tr>
+        <tr>
+          <td> Branch Greater </td>
+          <td> bgt </td>
+        </tr>
+        <tr>
+          <td> Branch Lesser </td>
+          <td> blt </td>
+        </tr>
+        <tr>
+          <td> Function Start </td>
+          <td> fun </td>
+        </tr>
+        <tr>
+          <td> Call </td>
+          <td> call </td>
+        </tr>
+        <tr>
+          <td> Return </td>
+          <td> ret </td>
+        </tr>
+        <tr>
+          <td> Loop </td>
+          <td> loop </td>
+        </tr>
+        <tr>
+          <td> Iterate Loop </td>
+          <td> iter </td>
+        </tr>
+        <tr>
+          <td> Begin Execution </td>
+          <td> exe </td>
+        </tr>
+        <tr>
+          <td> Store </td>
+          <td> sto </td>
+        </tr>
+        <tr>
+          <td> Load </td>
+          <td> lod </td>
+        </tr>
+        <tr>
+          <td> Stack Length </td>
+          <td> len </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <h3> The Three Stacks </h3>
+    The stack is an essential part of any assembly language, however it is
+    often a point of vulnerability. Stack-smashing and stack-overflow
+    vulnerabilities can very easily allow attackers to overwright function
+    return addresses, and and execute arbitrary code. This is why Forte uses
+    three distinct stacks.
+    <h3> The Program Stack </h3>
+    The program stack, or p-stack for short, contains all of the state for the
+    user-space program. When you push or pop a value in Forte, you are
+    interacting with the p-stack. What's most interesting about the p-stack is
+    what it does not contain: pointers. There is no way to jump to an address
+    on the p-stack, as its contents are considered untrusted. 
+    <h3> The Control Stack </h3>
+    In order to call functions, return addresses must be stored somewhere.
+    While most assembly languages place these on the stack alongside other
+    values, Forte segregates them into a separate control stack (c-stack for
+    short.) This is similar to the "shadow stack" option some compilers use,
+    except implemented at a hardware level. The only way to interact with the
+    c-stack is through call and return instructions.
+    <h3> The Function Stack </h3>
+    Most assembly languages have a "jump" instruction which moves the program
+    counter to an arbitrary point in memory. This is useful but not
+    particularly safe. Forte only allows jumping to valid functions. The
+    locations of these functions are kept in the function stack (f-stack.)
+    Functions are added to the f-stack after they are validated during the 
+    warmup phase, which I will discuss next.
+    <h3> Warmup </h3>
+    When a Forte program begins, it does not immediately start executing 
+    instructions. Instead, it validates the programs correctness and builds
+    the f-stack. Every <code>fun</code> (function start) instruction will
+    push the address of that instruction to the f-stack. Every instruction that
+    interacts with the stack will increment or decrement an internal register
+    accordingly. If this value value falls below zero or above the maximum
+    stack size, then the program is determined to be unsafe and execution
+    is cancelled before it begins. The warmup phase will take O(N) time,
+    where N is the number of instructions.
+    <h3> Recital </h3>
+    After the <code>exe</code> (begin execution) instruction is reached, the
+    Recital phase begins. The function pointer returns to the address at the
+    top of the f-stack, which was the last defined function. When the program
+    counter reaches the <code>exe</code> again, the program has terminated
+    successfully. This combination of design decisions means that the program
+    counter can never be lower than the first function address, or larger than
+    the execution instruction. This makes arbitrary code execution attacks more
+    difficult to pull off. 
+    <h2 class="distinct"> Safety </h2>
+    Creating a memory safe assembly language presents much different challenges
+    from a compiled language like Rust. There are no compile-time checks or 
+    guarantees, any string of bytes could be interpreted as a "program." The core
+    design principle of Forte is to make unsecure programs impossible (or at least
+    very difficult) to express, and to make static analysis simple. This is a delicate
+    balance to strike - limiting Forte's capabilities necessarily makes it more
+    cumbersome and less performant. 
+  </div>
+
+</Container>

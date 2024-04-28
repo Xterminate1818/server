@@ -1,0 +1,108 @@
+<Container>
+  <div class="header">
+    <h1> nd-range </h1>
+    <h2> Vector Math - Standard Library </h2>
+  </div>
+  <div class="content">
+    <h2 class="distinct"> Motivation </h2>
+    The Rust standard library provides several 'Range' types which 
+    represent integers inside a given bounds (i.e. 1 &#8804; n &#8804; 100).
+    Ranges can be iterated over, and used for bounds testing of numbers.
+    In designing video games, it is often necessary to express 2 or 3 
+    dimensional quantities or bounds. Problems like iterating over
+    voxels in a 3D world, or testing for an intersection between rectangles
+    lend themselves to the idea of Ranges. 
+<@code lang="rust">
+// A 3D array representing a 128x128x128 voxel world
+let world_data = [[[0; 128]; 128]; 128];
+// The '0..128' here is a range from 0 to 127 inclusive
+for x in 0..128 {
+  for y in 0..128 {
+    for z in 0..128 {
+      let voxel = &world[x][y][z];
+      // Do something with voxel
+    }
+  }
+}
+</@code>
+  However, in these contexts the Range type is not particularly helpful. 
+  I am forced to use three different ranges and a triple nested 'for' loop.
+  The idea for nd-range is to expand the native Range type so that it 
+  can be used over arbitrary dimensions. This allows us to iterate over
+  X, Y, and Z coordinates in a single loop.
+<@code lang="rust">
+let world_data = [[[0; 128]; 128]; 128];
+for [x, y, z] in nrange!(0..128, 0..128, 0..128) {
+  let voxel = &world[x][y][z];
+  // Do something with voxel
+}
+</@code>
+  <h2 class="distinct"> Approach </h2>
+  An nd-range is similar in concept to an axis-aligned bounding box, 
+  or AABB. These are common abstractions used in game development, 
+  and there are well established algorithms that test for overlap.
+  Iterating over is slightly more complex, requiring some vector 
+  algebra. If we interpret the range of values over each axis as a 
+  vector, we can apply the cartesian product algorithm to find every
+  position within the bounded space. Below is a diagram from Wikipedia
+  (CC BY-SA 3.0).
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Cartesian_Product_qtl1.svg"
+       class="centered"
+  />
+  Because a range is contiguous by definition, generating a cartesian
+  product is simple and performant. The iterator object has a space
+  complexity of O(N), where n is the number of dimensions. Rust's const generics
+  allow the entire struct to exist on the stack, which is a boon to performance. 
+  <h2 class="distinct"> Performance </h2>
+  My points of comparison are the itertools and cartesian crates, which provide
+  comparable algorithms. Despite its popularity, I was shocked to discover how
+  slow the itertools implementation of the cartesian product is. The cartesian-rs
+  crate is lesser known, and uses a creative macro-based solution. I benchmarked
+  all three approaches, as well as the nested for-loop base case, over a 100x100x100
+  range.
+  <table class="striped">
+    <thead>
+      <th scope="col"> Implementation </th>
+      <th scope="col"> Average Time (ns) </th>
+      <th scope="col"> Error (+/- ns) </th>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"> 
+          <a href="https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.cartesian_product">
+          itertools 
+          </a>
+        </th>
+        <td> 1,821,573 </td>
+        <td> 31,501 </td>
+      </tr>
+      <tr>
+        <th scope="row"> 
+          <a href="https://crates.io/crates/cartesian">
+            cartesian-rs 
+          </a>
+        </th>
+        <td> 989,242 </td>
+        <td> 50,835 </td>
+      </tr>
+      <tr>
+        <th scope="row"> nd-range </th>
+        <td> 968,853 </td>
+        <td> 15,792 </td>
+      </tr>
+      <tr>
+        <th scope="row"> nested loops </th>
+        <td> 911,853 </td>
+        <td> 46,066 </td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="distinct"> Pros and Cons</h2>
+  My implementation is competitive with, and possibly faster than
+  its competitors for my use case. While nd-range only works for 
+  ranges of contiguous integers, itertools and cartesian-rs work
+  for any iterators. However, by restricting my use case I can
+  extract more performance gains and integrate better with the Rust
+  standard library. 
+  </div>
+</Container>

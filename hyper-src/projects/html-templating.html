@@ -1,0 +1,111 @@
+<Container>
+  <div class="header">
+    <h1> HTML Templating Engine <GithubIcon href="https://github.com/Xterminate1818/html"/> </h1>
+    <h2> Front End - Parser Design </h2>
+  </div>
+  <div class="content">
+    <h2 class="distinct"> Motivation </h2>
+    HTML is a powerful tool for creating static web pages, but 
+    is not easily modular or scalable. Front end frameworks like
+    React provide reusable components. I want to use components
+    without the overhead of a front-end framework. I want the final output to be statically generated rather than generated on the fly
+    by the server or the client, minified and with inlined CSS and 
+    JavaScript.
+    <h2 class="distinct"> Approach </h2>
+    After looking at some of the HTML parsing libraries, I was 
+    unsatisfied with the approaches most developers took. The DOM
+    is represented as a tree structure, where each node keeps a 
+    pointer to its children.
+<@code lang="rust">
+// From the html_parser crate
+pub enum Node {
+    Text(String),
+    Element(Element),
+    Comment(String),
+}
+
+pub struct Element {
+    pub name: String,
+    pub attributes: HashMap<String, Option<String>>,
+    pub children: Vec<Node>,
+    // other fields omitted
+}
+</@code>
+  This is bad for cache locality and effectively forces the use
+  of recursion in order to traverse the DOM. Recursion is undesirable
+  for performance and robustness reasons. My approach is to create a
+  flat array of elements. Parsing is done using a non-recursive parser
+  combinator model.
+<@code lang="rust">
+// My implementation (fields omitted)
+pub enum HtmlElement {
+  DocType,
+  Comment(/* */),
+  OpenTag { /* */ },
+  CloseTag { /* */ },
+  Text( /* */ ),
+  Script { /* */ },
+  Style { /* */ },
+  Directive { /* */ },
+}
+</@code>
+  This approach lends itself to linear iterative algorithms. An 
+  element's children can be represented as a slice of the DOM array, 
+  from the opening tag to its close tag.
+  <h2 class="distinct"> Templates </h2> 
+  I define a "template" as a user defined element which expands into
+  a larger piece of HTML. Templates can pass on children and attributes
+  to the final output. Some special templates can perform other functions,
+  like inlining a CSS file or syntax highlighting a code block.
+<@code lang="html">
+<!-- Here is a template definition -->
+<Echo> 
+  <h1 class=@class1> 
+    <@children/>
+  </h1>
+  <h2 class=@class2> 
+    <@children/> 
+  </h2>
+  <h3 class=@class3>  
+    <@children/> 
+  </h3>
+</Echo>
+
+<!-- And this is how to use the template -->
+<Echo class1="some_class1" class2="some_class2" class3="some_class3">
+  Echo!
+</Echo>
+
+<!-- Which expands to this -->
+<h1 class="some_class1"> 
+  Echo!
+</h1>
+<h2 class="some_class2"> 
+  Echo!
+</h2>
+<h3 class="some_class3">  
+  Echo!
+</h3>
+</@code>
+  The example above shows how templates can inherit attributes and child
+  elements from their invocation. Special templates begin with the '@'
+  symbol, and perform some sort of meta-function. In addition to
+  &#60;@children/&#62;, &#60;@code/&#62; performs syntax highlighting, and
+  &#60;@style/&#62; inlines a CSS file.
+
+  <h2 class="distinct"> Dependencies </h2>
+  The templating engine only relies on two crates for performing syntax 
+  highlighting of code blocks. It uses inkjet, a thin wrapper over
+  treesitter. Treesitter is an efficient error-tolerant language parser
+  commonly used in IDEs. While it is fast, it is by far the slowest and
+  most cumbersome part of the program. Good looking formatted code is 
+  important for my website, and implementing parsers for every language
+  I use is out of scope, so this is a necessary evil.
+<@code lang="toml">
+// Snippet from Cargo.toml
+[dependencies]
+inkjet = "0.10"
+v_htmlescape = "0.15"
+</@code>
+  </div>
+</Container>

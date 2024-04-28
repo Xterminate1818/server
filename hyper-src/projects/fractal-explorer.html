@@ -1,0 +1,97 @@
+<Container>
+  <div class="header">
+    <h1> Fractal Explorer <GithubIcon href="https://github.com/Xterminate1818/rowdyhacks-2023"/> </h1>
+    <h2> Parallel Algorithms - Optimization - Hackathon Finalist </h2>
+  </div>
+  <div class="content">
+    <h2 class="distinct"> Motivation </h2>
+    In March of 2023 I attended RowdyHacks 8, my first hackathon. I was 
+    in the middle of my Calculus II class, which I was enjoying a lot. With
+    Math at the front of my mind, I decided to write a program to visualize
+    the Mandelbrot Fractal. I had written a similar program in Snap, a visual
+    block-based programming language, so I was confident I could achieve results
+    within the 24 hour time limit. I wanted to specifically optimize the program 
+    for speed without using GPU acceleration, because the laptop I was using did
+    not have one.
+    <h2 class="distinct"> Approach </h2>
+    The premise behind the Mandelbrot Fractal is to take a complex number, and 
+    insert it into a recursive function. If the function does not diverge to 
+    infinity, then that number is part of the Mandelbrot Set, and it gets plotted
+    on the screen.
+    Calculating the Mandelbrot Set is deceptively simple. The hard part is doing so
+    with a very large degree of precision, and repeating the calculations millions of 
+    times (prefferably in parallel.)
+<@code lang="rust">
+// Snippet from my initial naive algorithm
+//
+// This will produce the value of one pixel on the screen
+pub fn fractal(val: Complex, max_iterations: usize) -> usize {
+  let mut iterations = 0;
+  let mut last = Complex::new(0.0, 0.0);
+  let mut squared = Complex::new(0.0, 0.0);
+  // Values exceeding 4 usually diverge. If the number
+  // does not diverge after `max_iterations`, it probably
+  // never will.
+  while squared.re + squared.im <= 4.0 && 
+    iterations < max_iterations {
+    let im = 2.0 * last.re * last.im + val.im;
+    let re = squared.re - squared.im + val.re;
+    last = Complex { re, im };
+    squared.re = re.powi(2);
+    squared.im = im.powi(2);
+    iterations += 1;
+  }
+  iterations
+}
+</@code>
+  While researching the Mandelbrot set, I found a faster solution called the derivative
+  bail algorithm. This algorithm considers the first derivative of the function rather
+  than the functions value itself, which is more accurate and performant most of the time.
+<@code lang="rust">
+// Snippet from my derivative bail implementation
+pub fn get_dbail(val: Complex, max_dvt: f64, max_iter: usize) -> usize {
+  let max_dvt = max_dvt.powi(2);
+  let mut it = 0;
+  let mut last = Complex::new(0.0, 0.0);
+  let mut squared = Complex::new(0.0, 0.0);
+  let mut deriv = Complex::new(0.0, 0.0);
+  while squared.re + squared.im <= 4.0
+    && deriv.re.powi(2) + deriv.im.powi(2) <= max_dvt
+    && it <= max_iter
+  {
+    deriv.re = 2.0 * (deriv.re * val.re - deriv.im * val.im);
+    deriv.im = 2.0 * (deriv.re * val.im + deriv.im * val.re);
+    let im = 2.0 * last.re * last.im + val.im;
+    let re = squared.re - squared.im + val.re;
+    last = Complex { re, im };
+    squared.re = re.powi(2);
+    squared.im = im.powi(2);
+    it += 1;
+  }
+  it
+}
+</@code>
+  Deciding whether a number does or does not fall into the set is more of a heuristic
+  than an analytic process. A good algorithm balances accuracy with efficiency. The
+  most glaring limitation of any calculation is the precision of the floating point
+  numbers used, especially when zooming in to the fractal. I deliberated the pros and
+  cons of using a floating point library with very high, or even arbitrary precision. 
+  After extensive benchmarking, I was unable to get any of these to be efficient enough.
+  <h2 class="distinct"> Multi-Threading </h2>
+  In order to display the fractal, I needed an array of pixel data I could push to the 
+  screen. The X and Y coordinates represent real and imaginary components respectively.
+  This means I need to run the function for every pixel on the screen. The Mandelbrot
+  Fractal is an obvious candidate for multi-threading, because the result of every
+  calculation is independent, and there are many calculations that need to be done. 
+  I achieve this by breaking the pixel buffer into N partitions, and spawning a thread
+  to handle each (where N can be changed at runtime). This allowed me to rapidly iterate,
+  and find the optimal number of threads for the best performance.
+  <h2 class="distinct"> Results </h2>
+  I finished the project right before the deadline. This was my first time competing at
+  a hackathon, and the most code I had ever written in a 24 hour period. I was absolutely 
+  exhausted, with no real idea of what to expect. I presented my project to the judges and
+  the other hackers at the event. The reception was incredibly positive, and I met many 
+  brilliant people I stay in contact with to this day. My project won 2nd prize overall
+  at the event, for which I am extremely honored and greatful. 
+  </div>
+</Container>

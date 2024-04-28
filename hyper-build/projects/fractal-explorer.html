@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title> &#60loganGatlin/&#62 </title><link type="image/x-icon" rel="icon" href="resources/favicon.svg"/><style>
+/*!
+Pure v3.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/pure-css/pure/blob/master/LICENSE
+*/
+/*!
+normalize.css v | MIT License | https://necolas.github.io/normalize.css/
+Copyright (c) Nicolas Gallagher and Jonathan Neal
+*/
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}html{font-family:sans-serif}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}.pure-g{display:flex;flex-flow:row wrap;align-content:flex-start}.pure-u{display:inline-block;vertical-align:top}.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}.pure-button{display:inline-block;line-height:normal;white-space:nowrap;vertical-align:middle;text-align:center;cursor:pointer;-webkit-user-drag:none;-webkit-user-select:none;user-select:none;box-sizing:border-box}.pure-button::-moz-focus-inner{padding:0;border:0}.pure-button-group{letter-spacing:-.31em;text-rendering:optimizespeed}.opera-only :-o-prefocus,.pure-button-group{word-spacing:-0.43em}.pure-button-group .pure-button{letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-button{font-family:inherit;font-size:100%;padding:.5em 1em;color:rgba(0,0,0,.8);border:none transparent;background-color:#e6e6e6;text-decoration:none;border-radius:2px}.pure-button-hover,.pure-button:focus,.pure-button:hover{background-image:linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))}.pure-button:focus{outline:0}.pure-button-active,.pure-button:active{box-shadow:0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;border-color:#000}.pure-button-disabled,.pure-button-disabled:active,.pure-button-disabled:focus,.pure-button-disabled:hover,.pure-button[disabled]{border:none;background-image:none;opacity:.4;cursor:not-allowed;box-shadow:none;pointer-events:none}.pure-button-hidden{display:none}.pure-button-primary,.pure-button-selected,a.pure-button-primary,a.pure-button-selected{background-color:#0078e7;color:#fff}.pure-button-group .pure-button{margin:0;border-radius:0;border-right:1px solid rgba(0,0,0,.2)}.pure-button-group .pure-button:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}.pure-button-group .pure-button:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px;border-right:none}.pure-form input[type=color],.pure-form input[type=date],.pure-form input[type=datetime-local],.pure-form input[type=datetime],.pure-form input[type=email],.pure-form input[type=month],.pure-form input[type=number],.pure-form input[type=password],.pure-form input[type=search],.pure-form input[type=tel],.pure-form input[type=text],.pure-form input[type=time],.pure-form input[type=url],.pure-form input[type=week],.pure-form select,.pure-form textarea{padding:.5em .6em;display:inline-block;border:1px solid #ccc;box-shadow:inset 0 1px 3px #ddd;border-radius:4px;vertical-align:middle;box-sizing:border-box}.pure-form input:not([type]){padding:.5em .6em;display:inline-block;border:1px solid #ccc;box-shadow:inset 0 1px 3px #ddd;border-radius:4px;box-sizing:border-box}.pure-form input[type=color]{padding:.2em .5em}.pure-form input[type=color]:focus,.pure-form input[type=date]:focus,.pure-form input[type=datetime-local]:focus,.pure-form input[type=datetime]:focus,.pure-form input[type=email]:focus,.pure-form input[type=month]:focus,.pure-form input[type=number]:focus,.pure-form input[type=password]:focus,.pure-form input[type=search]:focus,.pure-form input[type=tel]:focus,.pure-form input[type=text]:focus,.pure-form input[type=time]:focus,.pure-form input[type=url]:focus,.pure-form input[type=week]:focus,.pure-form select:focus,.pure-form textarea:focus{outline:0;border-color:#129fea}.pure-form input:not([type]):focus{outline:0;border-color:#129fea}.pure-form input[type=checkbox]:focus,.pure-form input[type=file]:focus,.pure-form input[type=radio]:focus{outline:thin solid #129FEA;outline:1px auto #129FEA}.pure-form .pure-checkbox,.pure-form .pure-radio{margin:.5em 0;display:block}.pure-form input[type=color][disabled],.pure-form input[type=date][disabled],.pure-form input[type=datetime-local][disabled],.pure-form input[type=datetime][disabled],.pure-form input[type=email][disabled],.pure-form input[type=month][disabled],.pure-form input[type=number][disabled],.pure-form input[type=password][disabled],.pure-form input[type=search][disabled],.pure-form input[type=tel][disabled],.pure-form input[type=text][disabled],.pure-form input[type=time][disabled],.pure-form input[type=url][disabled],.pure-form input[type=week][disabled],.pure-form select[disabled],.pure-form textarea[disabled]{cursor:not-allowed;background-color:#eaeded;color:#cad2d3}.pure-form input:not([type])[disabled]{cursor:not-allowed;background-color:#eaeded;color:#cad2d3}.pure-form input[readonly],.pure-form select[readonly],.pure-form textarea[readonly]{background-color:#eee;color:#777;border-color:#ccc}.pure-form input:focus:invalid,.pure-form select:focus:invalid,.pure-form textarea:focus:invalid{color:#b94a48;border-color:#e9322d}.pure-form input[type=checkbox]:focus:invalid:focus,.pure-form input[type=file]:focus:invalid:focus,.pure-form input[type=radio]:focus:invalid:focus{outline-color:#e9322d}.pure-form select{height:2.25em;border:1px solid #ccc;background-color:#fff}.pure-form select[multiple]{height:auto}.pure-form label{margin:.5em 0 .2em}.pure-form fieldset{margin:0;padding:.35em 0 .75em;border:0}.pure-form legend{display:block;width:100%;padding:.3em 0;margin-bottom:.3em;color:#333;border-bottom:1px solid #e5e5e5}.pure-form-stacked input[type=color],.pure-form-stacked input[type=date],.pure-form-stacked input[type=datetime-local],.pure-form-stacked input[type=datetime],.pure-form-stacked input[type=email],.pure-form-stacked input[type=file],.pure-form-stacked input[type=month],.pure-form-stacked input[type=number],.pure-form-stacked input[type=password],.pure-form-stacked input[type=search],.pure-form-stacked input[type=tel],.pure-form-stacked input[type=text],.pure-form-stacked input[type=time],.pure-form-stacked input[type=url],.pure-form-stacked input[type=week],.pure-form-stacked label,.pure-form-stacked select,.pure-form-stacked textarea{display:block;margin:.25em 0}.pure-form-stacked input:not([type]){display:block;margin:.25em 0}.pure-form-aligned input,.pure-form-aligned select,.pure-form-aligned textarea,.pure-form-message-inline{display:inline-block;vertical-align:middle}.pure-form-aligned textarea{vertical-align:top}.pure-form-aligned .pure-control-group{margin-bottom:.5em}.pure-form-aligned .pure-control-group label{text-align:right;display:inline-block;vertical-align:middle;width:10em;margin:0 1em 0 0}.pure-form-aligned .pure-controls{margin:1.5em 0 0 11em}.pure-form .pure-input-rounded,.pure-form input.pure-input-rounded{border-radius:2em;padding:.5em 1em}.pure-form .pure-group fieldset{margin-bottom:10px}.pure-form .pure-group input,.pure-form .pure-group textarea{display:block;padding:10px;margin:0 0 -1px;border-radius:0;position:relative;top:-1px}.pure-form .pure-group input:focus,.pure-form .pure-group textarea:focus{z-index:3}.pure-form .pure-group input:first-child,.pure-form .pure-group textarea:first-child{top:1px;border-radius:4px 4px 0 0;margin:0}.pure-form .pure-group input:first-child:last-child,.pure-form .pure-group textarea:first-child:last-child{top:1px;border-radius:4px;margin:0}.pure-form .pure-group input:last-child,.pure-form .pure-group textarea:last-child{top:-2px;border-radius:0 0 4px 4px;margin:0}.pure-form .pure-group button{margin:.35em 0}.pure-form .pure-input-1{width:100%}.pure-form .pure-input-3-4{width:75%}.pure-form .pure-input-2-3{width:66%}.pure-form .pure-input-1-2{width:50%}.pure-form .pure-input-1-3{width:33%}.pure-form .pure-input-1-4{width:25%}.pure-form-message-inline{display:inline-block;padding-left:.3em;color:#666;vertical-align:middle;font-size:.875em}.pure-form-message{display:block;color:#666;font-size:.875em}@media only screen and (max-width :480px){.pure-form button[type=submit]{margin:.7em 0 0}.pure-form input:not([type]),.pure-form input[type=color],.pure-form input[type=date],.pure-form input[type=datetime-local],.pure-form input[type=datetime],.pure-form input[type=email],.pure-form input[type=month],.pure-form input[type=number],.pure-form input[type=password],.pure-form input[type=search],.pure-form input[type=tel],.pure-form input[type=text],.pure-form input[type=time],.pure-form input[type=url],.pure-form input[type=week],.pure-form label{margin-bottom:.3em;display:block}.pure-group input:not([type]),.pure-group input[type=color],.pure-group input[type=date],.pure-group input[type=datetime-local],.pure-group input[type=datetime],.pure-group input[type=email],.pure-group input[type=month],.pure-group input[type=number],.pure-group input[type=password],.pure-group input[type=search],.pure-group input[type=tel],.pure-group input[type=text],.pure-group input[type=time],.pure-group input[type=url],.pure-group input[type=week]{margin-bottom:0}.pure-form-aligned .pure-control-group label{margin-bottom:.3em;text-align:left;display:block;width:100%}.pure-form-aligned .pure-controls{margin:1.5em 0 0 0}.pure-form-message,.pure-form-message-inline{display:block;font-size:.75em;padding:.2em 0 .8em}}.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:nowrap}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;padding:.5em 0}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent;cursor:default}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected>.pure-menu-link,.pure-menu-selected>.pure-menu-link:visited{color:#000}.pure-table{border-collapse:collapse;border-spacing:0;empty-cells:show;border:1px solid #cbcbcb}.pure-table caption{color:#000;font:italic 85%/1 arial,sans-serif;padding:1em 0;text-align:center}.pure-table td,.pure-table th{border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em}.pure-table thead{background-color:#e0e0e0;color:#000;text-align:left;vertical-align:bottom}.pure-table td{background-color:transparent}.pure-table-odd td{background-color:#f2f2f2}.pure-table-striped tr:nth-child(2n-1) td{background-color:#f2f2f2}.pure-table-bordered td{border-bottom:1px solid #cbcbcb}.pure-table-bordered tbody>tr:last-child>td{border-bottom-width:0}.pure-table-horizontal td,.pure-table-horizontal th{border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb}.pure-table-horizontal tbody>tr:last-child>td{border-bottom-width:0}
+</style><style>
+@font-face {
+  font-family: Cascadia;
+  src: url("/resources/CascadiaMonoPL.woff2");
+}
+
+body {
+    color: #444;
+    font-size: 1.2em;
+}
+
+.link {
+  text-decoration: none;
+  color: #1e90ff;
+}
+
+.link :visited {
+  color: #1e90ff;
+}
+
+table {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 0.25em 0.25em 0.25em 0.25em;
+  border: 2px solid;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.25em 0.25em 0.25em 0.25em;
+  border: 2px solid;
+  border-collapse: collapse;
+}
+
+/* https://css-loaders.com/spinner/ */
+/* HTML: <div class="loader"></div> */
+.loading {
+  width: 512px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+
+.centered {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.pure-img-responsive { max-width: 100%; height: auto;
+}
+
+.cascadia {
+  font-family: Cascadia;
+}
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+.home-menu {
+    background: #333;
+}
+
+.home-menu a {
+    color: #ccc;
+}
+
+.home-menu li a:hover,
+.home-menu li a:focus {
+    animation: menu-hover-anim 0.25s ease-out;
+    animation-fill-mode: forwards;
+    background: none;
+    border: none;
+}
+
+
+.link {
+  color: #00f;
+  text-decoration: none;
+}
+
+
+.video {
+  text-align: center;
+}
+
+.video iframe {
+  width: 32em;
+  height: 18em;
+  frameborder: "0";
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+.header {
+     margin: 0;
+     color: #444;
+     text-align: center;
+     padding: 2.5em 4em 0;
+     border-bottom: 1px solid #eee;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+     .header h2 {
+        font-weight: 300;
+        color: #888;
+        padding: 0;
+        margin-top: 0;
+    }
+
+.distinct {
+  background-color: #444;
+  color: #fff;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+@keyframes card-hover-anim {
+  to {background-color: #ccc;}
+}
+@keyframes card-text-hover-anim {
+  to {color: #222;}
+}
+
+.spaced {
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin: 1em 0em 1em 0em;
+}
+
+h1 a svg {
+  vertical-align: middle;
+}
+
+.card {
+  background-color: #eee;
+  text-decoration: none;
+  text-align: left;
+}
+
+  .card h1 {
+    color: #444;
+  }
+  .card h2 {
+    color: #777;
+  }
+  .card h3 {
+    color: #999;
+  }
+  .card a {
+    text-decoration: none;
+    display: block;
+  }
+
+  .card:hover {
+    animation: card-hover-anim 0.25s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+
+  /* .card:hover h3 { */
+  /*   animation: card-text-hover-anim 0.25s ease-out; */
+  /*   animation-fill-mode: forwards; */
+  /* } */
+
+  .card img {
+    vertical-align: bottom;
+    float: right;
+    padding: 0em 0.1em 0em 0.1em;
+    width: 60px;
+  }
+  .card svg {
+    vertical-align: bottom;
+    float: right;
+    padding: 0em 0.1em 0em 0.1em;
+    width: 3em;
+    height: auto;
+  }
+
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #444;
+}
+
+code {
+  font-family: Cascadia;
+}
+
+.code-block {
+  /* background-color: #fdf6e3;  */
+  background-color: #eee;
+  color: #002b36;
+  font-family: Cascadia;
+  font-size: 0.85em;
+  padding: 0em 0.5em 0em 0.5em;
+  margin: 1em 0em 1em 0em;
+  page-break-inside: avoid;
+  display: block;
+  overflow: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+.code-block pre {
+  display: block;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.code-block pre code {
+  font-family: Cascadia;
+  display: block;
+  white-space: pre-wrap;
+}
+.code-block span {
+  /* background-color: #fdf6e3; */
+  background-color: #eee;
+}
+  .keyword {
+    color: #6c71c4;
+  }
+  .constant {
+    color: #cb4b16;
+  }
+  .function {
+    color: #268bd2;
+  }
+  .operator {
+    color: #6c71c4;
+  }
+  .punctuation {
+    color: #586e75;
+  }
+  .string {
+    color: #859900;
+  }
+  .type {
+    color: #2aa198;
+  }
+  .property {
+    color: #586e75;
+  }
+</style></head><body><div class="pure-g"><div class="pure-u-1-1"><div class="header"><h1> Fractal Explorer <a href="https://github.com/Xterminate1818/rowdyhacks-2023" target="_blank"><svg style="width: 1em; padding-bottom: 0.2em;" viewBox="0 0 128 128"><title> View source on GitHub </title><g fill="#181616"><path fill-rule="evenodd" clip-rule="evenodd" d="M64 5.103c-33.347 0-60.388 27.035-60.388 60.388 0 26.682 17.303 49.317 41.297 57.303 3.017.56 4.125-1.31 4.125-2.905 0-1.44-.056-6.197-.082-11.243-16.8 3.653-20.345-7.125-20.345-7.125-2.747-6.98-6.705-8.836-6.705-8.836-5.48-3.748.413-3.67.413-3.67 6.063.425 9.257 6.223 9.257 6.223 5.386 9.23 14.127 6.562 17.573 5.02.542-3.903 2.107-6.568 3.834-8.076-13.413-1.525-27.514-6.704-27.514-29.843 0-6.593 2.36-11.98 6.223-16.21-.628-1.52-2.695-7.662.584-15.98 0 0 5.07-1.623 16.61 6.19C53.7 35 58.867 34.327 64 34.304c5.13.023 10.3.694 15.127 2.033 11.526-7.813 16.59-6.19 16.59-6.19 3.287 8.317 1.22 14.46.593 15.98 3.872 4.23 6.215 9.617 6.215 16.21 0 23.194-14.127 28.3-27.574 29.796 2.167 1.874 4.097 5.55 4.097 11.183 0 8.08-.07 14.583-.07 16.572 0 1.607 1.088 3.49 4.148 2.897 23.98-7.994 41.263-30.622 41.263-57.294C124.388 32.14 97.35 5.104 64 5.104z"></path><path d="M26.484 91.806c-.133.3-.605.39-1.035.185-.44-.196-.685-.605-.543-.906.13-.31.603-.395 1.04-.188.44.197.69.61.537.91zm2.446 2.729c-.287.267-.85.143-1.232-.28-.396-.42-.47-.983-.177-1.254.298-.266.844-.14 1.24.28.394.426.472.984.17 1.255zM31.312 98.012c-.37.258-.976.017-1.35-.52-.37-.538-.37-1.183.01-1.44.373-.258.97-.025 1.35.507.368.545.368 1.19-.01 1.452zm3.261 3.361c-.33.365-1.036.267-1.552-.23-.527-.487-.674-1.18-.343-1.544.336-.366 1.045-.264 1.564.23.527.486.686 1.18.333 1.543zm4.5 1.951c-.147.473-.825.688-1.51.486-.683-.207-1.13-.76-.99-1.238.14-.477.823-.7 1.512-.485.683.206 1.13.756.988 1.237zm4.943.361c.017.498-.563.91-1.28.92-.723.017-1.308-.387-1.315-.877 0-.503.568-.91 1.29-.924.717-.013 1.306.387 1.306.88zm4.598-.782c.086.485-.413.984-1.126 1.117-.7.13-1.35-.172-1.44-.653-.086-.498.422-.997 1.122-1.126.714-.123 1.354.17 1.444.663zm0 0"></path></g></svg></a></h1><h2> Parallel Algorithms - Optimization - Hackathon Finalist </h2></div><div class="content"><h2 class="distinct"> Motivation </h2>
+    In March of 2023 I attended RowdyHacks 8, my first hackathon. I was 
+    in the middle of my Calculus II class, which I was enjoying a lot. With
+    Math at the front of my mind, I decided to write a program to visualize
+    the Mandelbrot Fractal. I had written a similar program in Snap, a visual
+    block-based programming language, so I was confident I could achieve results
+    within the 24 hour time limit. I wanted to specifically optimize the program 
+    for speed without using GPU acceleration, because the laptop I was using did
+    not have one.
+    <h2 class="distinct"> Approach </h2>
+    The premise behind the Mandelbrot Fractal is to take a complex number, and 
+    insert it into a recursive function. If the function does not diverge to 
+    infinity, then that number is part of the Mandelbrot Set, and it gets plotted
+    on the screen.
+    Calculating the Mandelbrot Set is deceptively simple. The hard part is doing so
+    with a very large degree of precision, and repeating the calculations millions of 
+    times (prefferably in parallel.)
+<div class="code-block">
+<pre><code>
+<span class="comment">&#x2f;&#x2f; Snippet from my initial naive algorithm</span>
+<span class="comment">&#x2f;&#x2f;</span>
+<span class="comment">&#x2f;&#x2f; This will produce the value of one pixel on the screen</span>
+<span class="keyword">pub</span> <span class="keyword function">fn</span> <span class="function">fractal</span><span class="punctuation bracket">(</span><span class="variable parameter">val</span>: <span class="type">Complex</span><span class="punctuation delimiter">,</span> <span class="variable parameter">max_iterations</span>: <span class="type builtin">usize</span><span class="punctuation bracket">)</span> <span class="operator">-&gt;</span> <span class="type builtin">usize</span> <span class="punctuation bracket">{</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">iterations</span> <span class="operator">=</span> <span class="constant numeric integer">0</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">last</span> <span class="operator">=</span> <span class="type">Complex</span><span class="punctuation delimiter">::</span><span class="function">new</span><span class="punctuation bracket">(</span><span class="constant numeric float">0.0</span><span class="punctuation delimiter">,</span> <span class="constant numeric float">0.0</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">squared</span> <span class="operator">=</span> <span class="type">Complex</span><span class="punctuation delimiter">::</span><span class="function">new</span><span class="punctuation bracket">(</span><span class="constant numeric float">0.0</span><span class="punctuation delimiter">,</span> <span class="constant numeric float">0.0</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="comment">&#x2f;&#x2f; Values exceeding 4 usually diverge. If the number</span>
+  <span class="comment">&#x2f;&#x2f; does not diverge after `max_iterations`, it probably</span>
+  <span class="comment">&#x2f;&#x2f; never will.</span>
+  <span class="keyword control repeat">while</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">+</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">&lt;=</span> <span class="constant numeric float">4.0</span> <span class="operator">&amp;&amp;</span> 
+    <span class="variable">iterations</span> <span class="operator">&lt;</span> <span class="variable parameter">max_iterations</span> <span class="punctuation bracket">{</span>
+    <span class="keyword storage">let</span> <span class="variable">im</span> <span class="operator">=</span> <span class="constant numeric float">2.0</span> <span class="operator">*</span> <span class="variable">last</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">*</span> <span class="variable">last</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">+</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span><span class="punctuation delimiter">;</span>
+    <span class="keyword storage">let</span> <span class="variable">re</span> <span class="operator">=</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">-</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">+</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span><span class="punctuation delimiter">;</span>
+    <span class="variable">last</span> <span class="operator">=</span> <span class="constructor">Complex</span> <span class="punctuation bracket">{</span> <span class="variable other member">re</span><span class="punctuation delimiter">,</span> <span class="variable other member">im</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">;</span>
+    <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">=</span> <span class="variable">re</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">=</span> <span class="variable">im</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="variable">iterations</span> <span class="operator">+=</span> <span class="constant numeric integer">1</span><span class="punctuation delimiter">;</span>
+  <span class="punctuation bracket">}</span>
+  <span class="variable">iterations</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+</div>
+  While researching the Mandelbrot set, I found a faster solution called the derivative
+  bail algorithm. This algorithm considers the first derivative of the function rather
+  than the functions value itself, which is more accurate and performant most of the time.
+<div class="code-block">
+<pre><code>
+<span class="comment">&#x2f;&#x2f; Snippet from my derivative bail implementation</span>
+<span class="keyword">pub</span> <span class="keyword function">fn</span> <span class="function">get_dbail</span><span class="punctuation bracket">(</span><span class="variable parameter">val</span>: <span class="type">Complex</span><span class="punctuation delimiter">,</span> <span class="variable parameter">max_dvt</span>: <span class="type builtin">f64</span><span class="punctuation delimiter">,</span> <span class="variable parameter">max_iter</span>: <span class="type builtin">usize</span><span class="punctuation bracket">)</span> <span class="operator">-&gt;</span> <span class="type builtin">usize</span> <span class="punctuation bracket">{</span>
+  <span class="keyword storage">let</span> <span class="variable parameter">max_dvt</span> <span class="operator">=</span> <span class="variable parameter">max_dvt</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">it</span> <span class="operator">=</span> <span class="constant numeric integer">0</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">last</span> <span class="operator">=</span> <span class="type">Complex</span><span class="punctuation delimiter">::</span><span class="function">new</span><span class="punctuation bracket">(</span><span class="constant numeric float">0.0</span><span class="punctuation delimiter">,</span> <span class="constant numeric float">0.0</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">squared</span> <span class="operator">=</span> <span class="type">Complex</span><span class="punctuation delimiter">::</span><span class="function">new</span><span class="punctuation bracket">(</span><span class="constant numeric float">0.0</span><span class="punctuation delimiter">,</span> <span class="constant numeric float">0.0</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="keyword storage">let</span> <span class="keyword storage modifier">mut</span> <span class="variable">deriv</span> <span class="operator">=</span> <span class="type">Complex</span><span class="punctuation delimiter">::</span><span class="function">new</span><span class="punctuation bracket">(</span><span class="constant numeric float">0.0</span><span class="punctuation delimiter">,</span> <span class="constant numeric float">0.0</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+  <span class="keyword control repeat">while</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">+</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">&lt;=</span> <span class="constant numeric float">4.0</span>
+    <span class="operator">&amp;&amp;</span> <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span> <span class="operator">+</span> <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span> <span class="operator">&lt;=</span> <span class="variable parameter">max_dvt</span>
+    <span class="operator">&amp;&amp;</span> <span class="variable">it</span> <span class="operator">&lt;=</span> <span class="variable parameter">max_iter</span>
+  <span class="punctuation bracket">{</span>
+    <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">=</span> <span class="constant numeric float">2.0</span> <span class="operator">*</span> <span class="punctuation bracket">(</span><span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">*</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">-</span> <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">*</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">=</span> <span class="constant numeric float">2.0</span> <span class="operator">*</span> <span class="punctuation bracket">(</span><span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">*</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">+</span> <span class="variable">deriv</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">*</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="keyword storage">let</span> <span class="variable">im</span> <span class="operator">=</span> <span class="constant numeric float">2.0</span> <span class="operator">*</span> <span class="variable">last</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">*</span> <span class="variable">last</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">+</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span><span class="punctuation delimiter">;</span>
+    <span class="keyword storage">let</span> <span class="variable">re</span> <span class="operator">=</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">-</span> <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">+</span> <span class="variable parameter">val</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span><span class="punctuation delimiter">;</span>
+    <span class="variable">last</span> <span class="operator">=</span> <span class="constructor">Complex</span> <span class="punctuation bracket">{</span> <span class="variable other member">re</span><span class="punctuation delimiter">,</span> <span class="variable other member">im</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">;</span>
+    <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">re</span> <span class="operator">=</span> <span class="variable">re</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="variable">squared</span><span class="punctuation delimiter">.</span><span class="variable other member">im</span> <span class="operator">=</span> <span class="variable">im</span><span class="punctuation delimiter">.</span><span class="function">powi</span><span class="punctuation bracket">(</span><span class="constant numeric integer">2</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+    <span class="variable">it</span> <span class="operator">+=</span> <span class="constant numeric integer">1</span><span class="punctuation delimiter">;</span>
+  <span class="punctuation bracket">}</span>
+  <span class="variable">it</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+</div>
+  Deciding whether a number does or does not fall into the set is more of a heuristic
+  than an analytic process. A good algorithm balances accuracy with efficiency. The
+  most glaring limitation of any calculation is the precision of the floating point
+  numbers used, especially when zooming in to the fractal. I deliberated the pros and
+  cons of using a floating point library with very high, or even arbitrary precision. 
+  After extensive benchmarking, I was unable to get any of these to be efficient enough.
+  <h2 class="distinct"> Multi-Threading </h2>
+  In order to display the fractal, I needed an array of pixel data I could push to the 
+  screen. The X and Y coordinates represent real and imaginary components respectively.
+  This means I need to run the function for every pixel on the screen. The Mandelbrot
+  Fractal is an obvious candidate for multi-threading, because the result of every
+  calculation is independent, and there are many calculations that need to be done. 
+  I achieve this by breaking the pixel buffer into N partitions, and spawning a thread
+  to handle each (where N can be changed at runtime). This allowed me to rapidly iterate,
+  and find the optimal number of threads for the best performance.
+  <h2 class="distinct"> Results </h2>
+  I finished the project right before the deadline. This was my first time competing at
+  a hackathon, and the most code I had ever written in a 24 hour period. I was absolutely 
+  exhausted, with no real idea of what to expect. I presented my project to the judges and
+  the other hackers at the event. The reception was incredibly positive, and I met many 
+  brilliant people I stay in contact with to this day. My project won 2nd prize overall
+  at the event, for which I am extremely honored and greatful. 
+  </div></div></div></body></html>
