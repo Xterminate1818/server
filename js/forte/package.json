@@ -1,0 +1,14 @@
+{
+  "name": "forte",
+  "version": "0.1.0",
+  "files": [
+    "forte_bg.wasm",
+    "forte.js",
+    "forte.d.ts"
+  ],
+  "module": "forte.js",
+  "types": "forte.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
