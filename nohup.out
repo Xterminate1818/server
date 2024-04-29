@@ -1,0 +1,192 @@
+warning: unused imports: `Write`, `cell::RefCell`, `path::Path`
+ --> /home/logan/fishbowl/src/lib.rs:3:3
+  |
+3 |   cell::RefCell,
+  |   ^^^^^^^^^^^^^
+4 |   future::join,
+5 |   io::{Cursor, Write},
+  |                ^^^^^
+6 |   path::Path,
+  |   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: field `uniform_buffer` is never read
+   --> /home/logan/fishbowl/src/draw.rs:108:3
+    |
+103 | pub struct QuickDraw {
+    |            --------- field in this struct
+...
+108 |   uniform_buffer: Buffer,
+    |   ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: `fishbowl` (lib) generated 2 warnings (run `cargo fix --lib -p fishbowl` to apply 1 suggestion)
+warning: unused import: `tiny_http::Header`
+ --> src/get.rs:6:5
+  |
+6 | use tiny_http::Header;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `query`
+  --> src/get.rs:14:13
+   |
+14 |   let (url, query) = url.split_once('?').unwrap_or((url, ""));
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_query`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function `graceful_cleanup` is never used
+  --> src/main.rs:15:4
+   |
+15 | fn graceful_cleanup() {
+   |    ^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `server` (bin "server") generated 3 warnings (run `cargo fix --bin "server"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.11s
+start.sh: 3: watchexec: not found
+18:35 INFO - Get AT "/home"
+warning: unused imports: `Write`, `cell::RefCell`, `path::Path`
+ --> /home/logan/fishbowl/src/lib.rs:3:3
+  |
+3 |   cell::RefCell,
+  |   ^^^^^^^^^^^^^
+4 |   future::join,
+5 |   io::{Cursor, Write},
+  |                ^^^^^
+6 |   path::Path,
+  |   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: field `uniform_buffer` is never read
+   --> /home/logan/fishbowl/src/draw.rs:108:3
+    |
+103 | pub struct QuickDraw {
+    |            --------- field in this struct
+...
+108 |   uniform_buffer: Buffer,
+    |   ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: `fishbowl` (lib) generated 2 warnings (run `cargo fix --lib -p fishbowl` to apply 1 suggestion)
+warning: unused import: `tiny_http::Header`
+ --> src/get.rs:6:5
+  |
+6 | use tiny_http::Header;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `query`
+  --> src/get.rs:14:13
+   |
+14 |   let (url, query) = url.split_once('?').unwrap_or((url, ""));
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_query`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function `graceful_cleanup` is never used
+  --> src/main.rs:15:4
+   |
+15 | fn graceful_cleanup() {
+   |    ^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `server` (bin "server") generated 3 warnings (run `cargo fix --bin "server"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.11s
+start.sh: 3: watchexec: not found
+18:36 INFO - Get AT "/home"
+18:36 INFO - Get AT "/home"
+19:09 INFO - Get AT "/robots.txt"
+19:09 INFO - Get AT "/"
+19:09 INFO - Get AT "/home"
+19:09 INFO - Get AT "/home"
+19:09 INFO - Get AT "/home"
+19:09 INFO - Get AT "/favicon.ico"
+19:09 INFO - Get AT "/resources/favicon.svg"
+19:09 INFO - Get AT "/resources/favicon.svg"
+19:14 INFO - Get AT "/home"
+19:14 INFO - Get AT "/home"
+19:14 INFO - Get AT "/resume.pdf"
+19:14 INFO - Get AT "/home"
+19:14 INFO - Get AT "/projects/http-server"
+19:15 INFO - Get AT "/projects/forte"
+19:16 INFO - Get AT "/projects/forte"
+warning: unused imports: `Write`, `cell::RefCell`, `path::Path`
+ --> /home/logan/fishbowl/src/lib.rs:3:3
+  |
+3 |   cell::RefCell,
+  |   ^^^^^^^^^^^^^
+4 |   future::join,
+5 |   io::{Cursor, Write},
+  |                ^^^^^
+6 |   path::Path,
+  |   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: field `uniform_buffer` is never read
+   --> /home/logan/fishbowl/src/draw.rs:108:3
+    |
+103 | pub struct QuickDraw {
+    |            --------- field in this struct
+...
+108 |   uniform_buffer: Buffer,
+    |   ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: `fishbowl` (lib) generated 2 warnings (run `cargo fix --lib -p fishbowl` to apply 1 suggestion)
+warning: unused import: `tiny_http::Header`
+ --> src/get.rs:6:5
+  |
+6 | use tiny_http::Header;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `query`
+  --> src/get.rs:14:13
+   |
+14 |   let (url, query) = url.split_once('?').unwrap_or((url, ""));
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_query`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function `graceful_cleanup` is never used
+  --> src/main.rs:15:4
+   |
+15 | fn graceful_cleanup() {
+   |    ^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `server` (bin "server") generated 3 warnings (run `cargo fix --bin "server"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.13s
+19:19 INFO - Get AT "/projects/forte"
+19:20 INFO - Get AT "/projects/forte"
+19:22 INFO - Get AT "/projects/forte"
+19:24 INFO - Get AT "/projects/forte"
+19:25 INFO - Get AT "/"
+19:25 INFO - Get AT "/home"
+19:26 INFO - Get AT "/projects/forte"
+19:40 INFO - Get AT "/robots.txt"
+19:40 INFO - Get AT "/"
+19:40 INFO - Get AT "/home"
+19:40 INFO - Get AT "/home"
+19:40 INFO - Get AT "/home"
+19:40 INFO - Get AT "/favicon.ico"
+19:40 INFO - Get AT "/resources/favicon.svg"
+19:40 INFO - Get AT "/resources/favicon.svg"
+19:40 INFO - Get AT "/projects/forte"
+19:41 INFO - Get AT "/projects/forte"
+19:41 INFO - Get AT "/projects/forte"
+19:42 INFO - Get AT "/home"

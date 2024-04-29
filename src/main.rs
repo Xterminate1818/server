@@ -23,10 +23,10 @@ fn graceful_cleanup() {
         .arg(format!("{}", last_pid))
         .output()
         .unwrap();
-    },
+    }
     None => {
       log::warn!("Did not find previous PID");
-    },
+    }
   };
   let pid = std::process::id();
   let mut file = std::fs::File::create(PID_PATH).unwrap();
@@ -37,13 +37,12 @@ fn graceful_cleanup() {
 async fn main() {
   // graceful_cleanup();
   let _h = logging::init();
-  // let ssl = tiny_http::SslConfig {
-  //   certificate:
-  // include_bytes!("../lgatlin.dev.cert").to_vec(),
-  //   private_key:
-  // include_bytes!("../../lgatlin.dev.priv").to_vec(), };
-  // let server = Server::https("0.0.0.0:443", ssl).unwrap();
-  let server = Server::http("0.0.0.0:8080").unwrap();
+  let ssl = tiny_http::SslConfig {
+    certificate: include_bytes!("../lgatlin.dev.cert").to_vec(),
+    private_key: include_bytes!("../../lgatlin.dev.priv").to_vec(),
+  };
+  let server = Server::https("0.0.0.0:443", ssl).unwrap();
+  // let server = Server::http("0.0.0.0:8080").unwrap();
 
   let router = Arc::new(Router::new());
   let post = Arc::new(PostHandler);
@@ -112,11 +111,7 @@ async fn main() {
   }
 }
 
-async fn handle_connection(
-  mut request: Request,
-  route: Arc<Router>,
-  post: Arc<PostHandler>,
-) {
+async fn handle_connection(mut request: Request, route: Arc<Router>, post: Arc<PostHandler>) {
   use tiny_http::*;
   let response = match request.method() {
     Method::Get | Method::Head => route.construct_response(request.url()).await,

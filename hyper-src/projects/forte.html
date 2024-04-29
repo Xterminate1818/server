@@ -192,12 +192,34 @@
     difficult to pull off. 
     <h2 class="distinct"> Safety </h2>
     Creating a memory safe assembly language presents much different challenges
-    from a compiled language like Rust. There are no compile-time checks or 
-    guarantees, any string of bytes could be interpreted as a "program." The core
-    design principle of Forte is to make unsecure programs impossible (or at least
-    very difficult) to express, and to make static analysis simple. This is a delicate
-    balance to strike - limiting Forte's capabilities necessarily makes it more
-    cumbersome and less performant. 
+    from a compiled language like Rust. There are no compile-time checks or
+    guarantees, any string of bytes could be interpreted as a "program." The
+    core design principle of Forte is to make unsecure programs impossible (or
+    at least very difficult) to express, and to make static analysis simple.
+    This is a delicate balance to strike - limiting Forte's capabilities
+    necessarily makes it more cumbersome and less performant. I believe we are
+    at a point in history where making this trade-off is the right move. Modern
+    processors are unbelievably fast, security concerns far outweigh
+    performance concerns in most use cases. Writing machine assembly by hand is
+    far less common today, and so the ergonomics of an assembly language are
+    also less of a concern.
+    <h2 class="distinct"> Limitations </h2>
+    Forte is the first programming language I've written, and it was hacked
+    together in less than 24 hours. It is certainly not production ready, and
+    not every feature is implemented yet. Other features are technically functional,
+    but exist as mostly placeholders for when I can find a better way to implement them.
+    <br/><br/>
+    Evaluating branching and looping code during the Warmup is very difficult to achieve.
+    I very quickly run into the 
+    <a class="link" href="https://en.wikipedia.org/wiki/Halting_problem">
+      Halting Problem</a>, 
+    and feasibility limits where I to try and implement this sort of algorithm on real
+    hardware. Solutions I've considered are requiring code branches to have the same net effect
+    on stack size, forcing branches to execute another function rather than exist inline, replacing
+    loops with some form of recursion, or outright removing branches and loops altogether. Without 
+    solving this problem, it is impossible to make the Warmup phase do its job, and so it is mostly
+    vestigial. As of now, Forte is only really capable of simple linear programs.
+    <h2 class="distinct"> Try it Out </h2>
   </div>
 
 </Container>
